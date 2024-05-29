@@ -1,0 +1,10 @@
+.form {
+  @include flexbox($direction: column);
+
+  .btn {
+    margin: 1rem 0;
+    border-radius: $border-radius;
+    background-color: $black;
+    color: $primary;
+  }
+}

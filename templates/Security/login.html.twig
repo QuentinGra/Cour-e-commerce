@@ -5,8 +5,9 @@
 {% endblock %}
 
 {% block body %}
-	<section>
-		<h1>Se connecter</h1>
+	<section class="form">
+		<h1>Connexion</h1>
+		<p>Entrez votre email et votre mot de passe pour continuer</p>
 		<form action="{{ path('app.login')}}" method="post">
 			{% if error %}
 				<div>
@@ -15,18 +16,20 @@
 			{% endif %}
 
 			<div>
-				<label for="email">Email:</label>
-				<input type="email" id="email" name="_username" value="{{ lastUsername }}">
+				<label for="email" class="form-label">Email:</label>
+				<input class="form-control" type="email" id="email" name="_username" value="{{ lastUsername }}">
 			</div>
 
 			<div>
-				<label for="password">Password:</label>
-				<input type="password" id="password" name="_password">
+				<label for="password" class="form-label">Password:</label>
+				<input class="form-control" type="password" id="password" name="_password">
 			</div>
 
 			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-			<button type="submit">Se connecter</button>
+			<button class="btn" type="submit">Se connecter</button>
 		</form>
+		<p>Pas encore de compte ?<a href="{{ path('app.register') }}">Créez en un</a>
+		</p>
 	</section>
 {% endblock %}
