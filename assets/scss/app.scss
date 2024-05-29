@@ -1,12 +1,17 @@
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/variables-dark";
-@import "~bootstrap/scss/maps";
-@import "~bootstrap/scss/mixins";
-@import "~bootstrap/scss/bootstrap-reboot";
-@import "~bootstrap/scss/dropdown";
-@import "~bootstrap/scss/alert";
-@import "~bootstrap/scss/pagination";
+// Import Abstracts
+@import "abstracts/variable";
+@import "abstracts/mixins";
+@import "abstracts/functions";
 
-// Form
-@import "~bootstrap/scss/forms";
+// Import Vendors
+@import "vendors/bootstrap";
+
+// Import Base
+@import "base/base";
+@import "base/typography";
+
+// Import Components
+
+// Import Layout
+
+// Import Pages
