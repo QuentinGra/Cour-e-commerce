@@ -12,10 +12,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-#[Route('/', name: 'app')]
 class SecurityController extends AbstractController
 {
-    #[Route('login', name: '.login', methods: ['GET', 'POST'])]
+    #[Route('/login', name: 'app.login', methods: ['GET', 'POST'])]
     public function login(AuthenticationUtils $authUtils): Response
     {
         return $this->render('security/login.html.twig', [
@@ -24,7 +23,7 @@ class SecurityController extends AbstractController
         ]);
     }
 
-    #[Route('register', name: '.register', methods: ['GET', 'POST'])]
+    #[Route('/register', name: 'app.register', methods: ['GET', 'POST'])]
     public function register(Request $request, UserPasswordHasherInterface $hasher, EntityManagerInterface $em): Response
     {
         $user = new User();
@@ -40,7 +39,7 @@ class SecurityController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            // Todo: add flash message
+            $this->addFlash('success', 'Vous êtes bien inscrit à notre application');
 
             return $this->redirectToRoute('app.login');
         }
