@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Modification de l'adresse
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Modification d'une adresse</h1>
+		{% include 'Frontend/Account/_editForm.html.twig' %}
+		<a href="{{ path('account.address') }}">Retour à la liste des adresses</a>
+	</section>
+{% endblock %}
