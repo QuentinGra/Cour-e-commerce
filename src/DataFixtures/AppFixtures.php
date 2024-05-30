@@ -51,7 +51,8 @@ class AppFixtures extends Fixture
             $address = (new Address())
                 ->setAddress($this->faker->address())
                 ->setZipCode($this->faker->postcode())
-                ->setCity($this->faker->city());
+                ->setCity($this->faker->city())
+                ->addUser($this->faker->randomElement($users));
 
             $manager->persist($address);
         }
