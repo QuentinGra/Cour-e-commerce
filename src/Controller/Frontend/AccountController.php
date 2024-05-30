@@ -2,8 +2,10 @@
 
 namespace App\Controller\Frontend;
 
+use App\Entity\User;
 use App\Entity\Address;
 use App\Form\AddressType;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,9 +23,11 @@ class AccountController extends AbstractController
     #[Route('/adresse', name: '.address', methods: ['GET'])]
     public function indexAddress(): Response
     {
-        // TODO: Récupérer les adresse de l'utilisateur connecter
+        /** @var User $user */
+        $user = $this->getUser();
+
         return $this->render('Frontend/Account/index.html.twig', [
-            'controller_name' => 'AccountController',
+            'addresses' => $user->getAddresses(),
         ]);
     }
 

@@ -7,6 +7,11 @@
 {% block body %}
 	<section>
 		<h1>Vos Adresses</h1>
-
+		{% for address in addresses %}
+			<p>{{ address.address }}</p>
+			<p>{{ address.ZipCode }}</p>
+			<p>{{ address.city }}</p>
+			<a href="">Modification</a>
+		{% endfor %}
 	</section>
 {% endblock %}
