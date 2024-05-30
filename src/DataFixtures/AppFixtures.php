@@ -2,16 +2,22 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\Address;
 use App\Entity\User;
+use Faker\Factory;
+use Faker\Generator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    private Generator $faker;
+
     public function __construct(
         private UserPasswordHasherInterface $hasher,
     ) {
+        $this->faker = Factory::create('fr_FR');
     }
 
     public function load(ObjectManager $manager): void
@@ -39,6 +45,15 @@ class AppFixtures extends Fixture
 
             $manager->persist($user);
             $users[] = $user;
+        }
+
+        for ($i = 0; $i < 50; ++$i) {
+            $address = (new Address())
+                ->setAddress($this->faker->address())
+                ->setZipCode($this->faker->postcode())
+                ->setCity($this->faker->city);
+
+            $manager->persist($address);
         }
 
         $manager->flush();
