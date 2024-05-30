@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Inscription
+{% endblock %}
+
+{% block body %}
+	<section class="form">
+		<div class="container">
+			<h1>Inscription</h1>
+			<p>Créez-vous un compte pour commencer à faire votre collection de Sneakers</p>
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button class="btn" type="submit">S'inscrire</button>
+			{{ form_end(form) }}
+			<p>Déja un compte ?
+				<a href="{{ path('app.login')}}">Connectez-vous</a>
+			</p>
+		</div>
+	</section>
+{% endblock %}

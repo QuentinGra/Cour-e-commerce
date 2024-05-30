@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des adresses
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Vos Adresses</h1>
+		{% for address in addresses %}
+			<p>{{ address.address }}</p>
+			<p>{{ address.ZipCode }}</p>
+			<p>{{ address.city }}</p>
+			<div>
+				<a href="{{ path('account.address.edit', {id: address.id}) }}">Modification</a>
+				{% include 'Frontend/Account/_deleteForm.html.twig' %}
+			</div>
+		{% endfor %}
+	</section>
+{% endblock %}

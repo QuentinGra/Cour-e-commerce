@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Admin des users
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Administration des users</h1>
+		<div>
+			{% for user in users %}
+				<div>
+					<h4>{{ user.fullName }}</h4>
+					<p>{{ user.email }}</p>
+					<p>{{ user.roles|join(', ') }}</p>
+					<div>
+						<a href="{{ path('admin.users.edit', {id: user.id}) }}">Modifier</a>
+						{% include 'Backend/Users/_deleteForm.html.twig' %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
