@@ -5,11 +5,17 @@
 {% endblock %}
 
 {% block body %}
-	<section>
-		<h1>Inscription</h1>
-		{{ form_start(form, {attr:{class: 'card p-3 w-75 mx-auto'}}) }}
-		{{ form_widget(form) }}
-		<button type="submit">S'inscrire</button>
-		{{ form_end(form) }}
+	<section class="form">
+		<div class="container">
+			<h1>Inscription</h1>
+			<p>Créez-vous un compte pour commencer à faire votre collection de Sneakers</p>
+			{{ form_start(form, {attr:{class: 'card p-3 w-75 mx-auto'}}) }}
+			{{ form_widget(form) }}
+			<button class="btn" type="submit">S'inscrire</button>
+			{{ form_end(form) }}
+			<p>Déja un compte ?
+				<a href="{{ path('app.login')}}">Connectez-vous</a>
+			</p>
+		</div>
 	</section>
 {% endblock %}

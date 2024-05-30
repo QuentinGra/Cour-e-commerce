@@ -1,0 +1,21 @@
+html,
+body {
+  scroll-behavior: smooth;
+  color: $secondary;
+}
+
+img,
+figure,
+video {
+  max-width: 100%;
+  object-fit: cover;
+  display: inline-block;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  width: 540px;
+}

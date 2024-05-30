@@ -4,14 +4,14 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\Regex;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class UserType extends AbstractType
 {
@@ -21,7 +21,7 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email',
                 'attr' => [
-                    'placeholder' => 'Test@exemple.com'
+                    'placeholder' => 'Test@exemple.com',
                 ],
                 'required' => true,
             ])
@@ -41,8 +41,8 @@ class UserType extends AbstractType
                         ]),
                         new Regex([
                             'pattern' => '/^.*(?=.{8,120})(?!.*\s)(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\!\@\#\$\%\^\&\*\(\)\-\=\¡\£\_\+\`\~\.\,\<\>\/\?\;\:\'\"\\\|\[\]\{\}]).*$/',
-                            'message' => 'Votre mot de passe doit contenir plus de 8 caractères avec 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spéciale'
-                        ])
+                            'message' => 'Votre mot de passe doit contenir plus de 8 caractères avec 1 majuscule, 1 minuscule, 1 chiffre et 1 caractère spéciale',
+                        ]),
                     ],
                 ],
                 'second_options' => [
