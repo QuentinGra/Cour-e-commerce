@@ -15,7 +15,7 @@
 					<p>{{ user.roles|join(', ') }}</p>
 					<div>
 						<a href="{{ path('admin.users.edit', {id: user.id}) }}">Modifier</a>
-						{# TODO: Ajouter form delete users #}
+						{% include 'Backend/Users/_deleteForm.html.twig' %}
 					</div>
 				</div>
 			{% endfor %}

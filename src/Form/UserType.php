@@ -38,7 +38,7 @@ class UserType extends AbstractType
                     'constraints' => [
                         new NotBlank(),
                         new Length([
-                            'max' => 255,
+                            'max' => 4096,
                         ]),
                         new Regex([
                             'pattern' => '/^.*(?=.{8,120})(?!.*\s)(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\!\@\#\$\%\^\&\*\(\)\-\=\¡\£\_\+\`\~\.\,\<\>\/\?\;\:\'\"\\\|\[\]\{\}]).*$/',
