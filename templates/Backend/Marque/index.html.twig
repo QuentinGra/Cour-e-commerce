@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des marques
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Administration des marques</h1>
+		<div>
+			{% for marque in marques %}
+				<div>
+					<h4>{{ marque.name }}</h4>
+					<p>{{ marque.description }}</p>
+					<p>{{ marque.enable ? 'Actif' : 'Inactif'}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
