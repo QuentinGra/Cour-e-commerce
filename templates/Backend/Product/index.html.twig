@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des produits
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Administration des produits</h1>
+		<div>
+			{% for product in products %}
+				<div>
+					<h4>{{ product.name }}</h4>
+					<p>{{ product.description }}</p>
+					<p>{{ product.authenticity }}</p>
+					<p>{{ product.enable ? 'Actif' : 'Inactif'}}</p>
+					<div>
+						<a href="">Modifier</a>
+						{# TODO: _deleteForm.html.twig #}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
