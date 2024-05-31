@@ -23,7 +23,7 @@ class ProductController extends AbstractController
     #[Route('', name: '.index', methods: ['GET'])]
     public function index(ProductRepository $productRepo): Response
     {
-        return $this->render('backend/product/index.html.twig', [
+        return $this->render('Backend/Product/index.html.twig', [
             'products' => $productRepo->findAll(),
         ]);
     }

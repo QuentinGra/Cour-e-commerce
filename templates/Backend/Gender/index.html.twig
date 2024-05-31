@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des genres
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Administration des genres</h1>
+		<div>
+			{% for gender in genders %}
+				<div>
+					<h4>{{ gender.name }}</h4>
+					<p>{{ gender.enable ? 'Actif' : 'Inactif'}}</p>
+					<div>
+						<a href="{{ path('admin.genders.edit', {id: gender.id}) }}">Modifier</a>
+						{% include 'Backend/Gender/_deleteForm.html.twig' %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
