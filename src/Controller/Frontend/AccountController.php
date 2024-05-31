@@ -47,7 +47,7 @@ class AccountController extends AbstractController
             $this->em->persist($address);
             $this->em->flush();
 
-            $this->addFlash('succes', 'Adresse crée avec succès');
+            $this->addFlash('success', 'Adresse crée avec succès');
 
             return $this->redirectToRoute('account.address');
         }
@@ -92,7 +92,7 @@ class AccountController extends AbstractController
             return $this->redirectToRoute('account.address');
         }
 
-        if ($this->isCsrfTokenValid('delete'.$address->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete' . $address->getId(), $request->request->get('token'))) {
             $this->em->remove($address);
             $this->em->flush();
 
