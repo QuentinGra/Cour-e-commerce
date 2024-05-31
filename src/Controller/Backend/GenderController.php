@@ -6,11 +6,11 @@ use App\Entity\Gender;
 use App\Form\GenderType;
 use App\Repository\GenderRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/genders', name: 'admin.genders')]
 class GenderController extends AbstractController
@@ -29,7 +29,7 @@ class GenderController extends AbstractController
     }
 
     #[Route('/create', name: '.create', methods: ['GET', 'POST'])]
-    public function create(Request $request): Response | RedirectResponse
+    public function create(Request $request): Response|RedirectResponse
     {
         $gender = new Gender();
 
@@ -51,10 +51,11 @@ class GenderController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: '.edit', methods: ['GET', 'POST'])]
-    public function update(?Gender $gender, Request $request): Response | RedirectResponse
+    public function update(?Gender $gender, Request $request): Response|RedirectResponse
     {
         if (!$gender) {
             $this->addFlash('error', 'Gender Not Found');
+
             return $this->redirectToRoute('admin.genders.index');
         }
 
@@ -76,14 +77,15 @@ class GenderController extends AbstractController
     }
 
     #[Route('/{id}/delete', name: '.delete', methods: ['POST'])]
-    public function delete(?Gender $gender, Request $request): Response | RedirectResponse
+    public function delete(?Gender $gender, Request $request): Response|RedirectResponse
     {
         if (!$gender) {
             $this->addFlash('error', 'Gender Not Found');
+
             return $this->redirectToRoute('admin.products.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $gender->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$gender->getId(), $request->request->get('token'))) {
             $this->em->remove($gender);
             $this->em->flush();
 

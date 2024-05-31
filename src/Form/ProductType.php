@@ -25,14 +25,14 @@ class ProductType extends AbstractType
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
                 'attr' => [
-                    'placeholder' => 'Description de votre produit'
+                    'placeholder' => 'Description de votre produit',
                 ],
                 'required' => true,
             ])
             ->add('authenticity', TextareaType::class, [
                 'label' => 'Authenticiter',
                 'attr' => [
-                    'placeholder' => 'Authenticiter de votre produit'
+                    'placeholder' => 'Authenticiter de votre produit',
                 ],
                 'required' => false,
             ])

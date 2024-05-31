@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
+use App\Entity\Utils\DateTimeTrait;
+use App\Entity\Utils\EnableTrait;
+use App\Entity\Utils\SluggableTrait;
+use App\Repository\ModelRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\Utils\EnableTrait;
-use App\Entity\Utils\DateTimeTrait;
-use App\Repository\ModelRepository;
-use App\Entity\Utils\SluggableTrait;
 
 #[ORM\Entity(repositoryClass: ModelRepository::class)]
 #[ORM\HasLifecycleCallbacks]

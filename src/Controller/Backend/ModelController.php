@@ -6,11 +6,11 @@ use App\Entity\Model;
 use App\Form\ModelType;
 use App\Repository\ModelRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/models', name: 'admin.models')]
 class ModelController extends AbstractController
@@ -29,7 +29,7 @@ class ModelController extends AbstractController
     }
 
     #[Route('/create', name: '.create', methods: ['GET', 'POST'])]
-    public function create(Request $request): Response | RedirectResponse
+    public function create(Request $request): Response|RedirectResponse
     {
         $model = new Model();
 
@@ -51,10 +51,11 @@ class ModelController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: '.edit', methods: ['GET', 'POST'])]
-    public function update(?Model $model, Request $request): Response | RedirectResponse
+    public function update(?Model $model, Request $request): Response|RedirectResponse
     {
         if (!$model) {
             $this->addFlash('error', 'Model Not Found');
+
             return $this->redirectToRoute('admin.models.index');
         }
 
@@ -76,14 +77,15 @@ class ModelController extends AbstractController
     }
 
     #[Route('/{id}/delete', name: '.delete', methods: ['POST'])]
-    public function delete(?Model $model, Request $request): Response | RedirectResponse
+    public function delete(?Model $model, Request $request): Response|RedirectResponse
     {
         if (!$model) {
             $this->addFlash('error', 'Model Not Found');
+
             return $this->redirectToRoute('admin.models.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $model->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$model->getId(), $request->request->get('token'))) {
             $this->em->remove($model);
             $this->em->flush();
 

@@ -17,7 +17,7 @@ class ModelType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom',
                 'attr' => [
-                    'placeholder' => 'Nom du model'
+                    'placeholder' => 'Nom du model',
                 ],
                 'required' => true,
             ])
