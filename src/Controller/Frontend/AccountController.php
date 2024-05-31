@@ -63,7 +63,7 @@ class AccountController extends AbstractController
         if (!$address) {
             $this->addFlash('error', 'Address Not Found');
 
-            return $this->redirectToRoute('app.account.address');
+            return $this->redirectToRoute('account.address');
         }
 
         $form = $this->createForm(AddressType::class, $address);
@@ -73,7 +73,7 @@ class AccountController extends AbstractController
             $this->em->persist($address);
             $this->em->flush();
 
-            $this->addFlash('success', 'Adresse modifier avec success');
+            $this->addFlash('success', 'Adresse modifié avec success');
 
             return $this->redirectToRoute('account.address');
         }

@@ -15,7 +15,7 @@
 					<p>{{ product.authenticity }}</p>
 					<p>{{ product.enable ? 'Actif' : 'Inactif'}}</p>
 					<div>
-						<a href="">Modifier</a>
+						<a href="{{ path('admin.products.edit', {id: product.id}) }}">Modifier</a>
 						{# TODO: _deleteForm.html.twig #}
 					</div>
 				</div>

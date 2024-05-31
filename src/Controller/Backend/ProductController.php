@@ -50,4 +50,39 @@ class ProductController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[Route('/{id}/edit', name: '.edit', methods: ['GET', 'POST'])]
+    public function update(?Product $product, Request $request): Response | RedirectResponse
+    {
+        if (!$product) {
+            $this->addFlash('error', 'Product Not Found');
+            return $this->redirectToRoute('admin.products.index');
+        }
+
+        $form = $this->createForm(ProductType::class, $product);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $this->em->persist($product);
+            $this->em->flush();
+
+            $this->addFlash('success', 'Produit modifié avec succès');
+
+            return $this->redirectToRoute('admin.products.index');
+        }
+
+        return $this->render('Backend/Product/edit.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}/delete', name: '.delete', methods: ['POST'])]
+    public function delete(?Product $product, Request $request): Response | RedirectResponse
+    {
+        if (!$product) {
+            $this->addFlash('error', 'Product Not Found');
+            return $this->redirectToRoute('admin.products.index');
+        }
+    }
 }
