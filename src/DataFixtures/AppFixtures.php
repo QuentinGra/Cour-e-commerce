@@ -58,14 +58,14 @@ class AppFixtures extends Fixture
             $manager->persist($address);
         }
 
-        for ($i = 0; $i < 20; $i++) {
-            $product = (new Product())
-                ->setName("Product $i")
-                ->setDescription($this->faker->text())
-                ->setEnable($this->faker->boolean());
+        // for ($i = 0; $i < 20; $i++) {
+        //     $product = (new Product())
+        //         ->setName("Product $i")
+        //         ->setDescription($this->faker->text())
+        //         ->setEnable($this->faker->boolean());
 
-            $manager->persist($product);
-        }
+        //     $manager->persist($product);
+        // }
 
         $manager->flush();
     }

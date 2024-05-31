@@ -30,6 +30,10 @@ class Product
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $authenticity = null;
 
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Gender $gender = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -55,6 +59,18 @@ class Product
     public function setAuthenticity(?string $authenticity): static
     {
         $this->authenticity = $authenticity;
+
+        return $this;
+    }
+
+    public function getGender(): ?Gender
+    {
+        return $this->gender;
+    }
+
+    public function setGender(?Gender $gender): static
+    {
+        $this->gender = $gender;
 
         return $this;
     }
