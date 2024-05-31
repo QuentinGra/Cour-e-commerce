@@ -6,11 +6,11 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/users', name: 'admin.users')]
 class UserController extends AbstractController
@@ -29,10 +29,11 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: '.edit', methods: ['GET', 'POST'])]
-    public function update(?User $user, Request $request): Response| RedirectResponse
+    public function update(?User $user, Request $request): Response|RedirectResponse
     {
         if (!$user) {
             $this->addFlash('error', 'Utilisateur Not Found');
+
             return $this->redirectToRoute('admin.users.index');
         }
 
@@ -40,11 +41,11 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->em->persist($user);
             $this->em->flush();
 
             $this->addFlash('success', 'Utilisateur Modifier avec success');
+
             return $this->redirectToRoute('admin.users.index');
         }
 
@@ -54,14 +55,15 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}/delete', name: '.delete', methods: ['POST'])]
-    public function delete(?User $user, Request $request): Response| RedirectResponse
+    public function delete(?User $user, Request $request): Response|RedirectResponse
     {
         if (!$user) {
             $this->addFlash('error', 'Utilisateur Not Found');
+
             return $this->redirectToRoute('admin.users.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('token'))) {
             $this->em->remove($user);
             $this->em->flush();
 

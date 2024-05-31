@@ -4,10 +4,10 @@ namespace App\DataFixtures;
 
 use App\Entity\Address;
 use App\Entity\User;
-use Faker\Factory;
-use Faker\Generator;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
+use Faker\Generator;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
