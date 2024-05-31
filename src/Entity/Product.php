@@ -34,6 +34,10 @@ class Product
     #[ORM\JoinColumn(nullable: false)]
     private ?Gender $gender = null;
 
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Model $model = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,6 +75,18 @@ class Product
     public function setGender(?Gender $gender): static
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getModel(): ?Model
+    {
+        return $this->model;
+    }
+
+    public function setModel(?Model $model): static
+    {
+        $this->model = $model;
 
         return $this;
     }
