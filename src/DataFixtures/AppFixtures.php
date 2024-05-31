@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Address;
+use App\Entity\Product;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -55,6 +56,15 @@ class AppFixtures extends Fixture
                 ->addUser($this->faker->randomElement($users));
 
             $manager->persist($address);
+        }
+
+        for ($i = 0; $i < 20; $i++) {
+            $product = (new Product())
+                ->setName("Product $i")
+                ->setDescription($this->faker->text())
+                ->setEnable($this->faker->boolean());
+
+            $manager->persist($product);
         }
 
         $manager->flush();
