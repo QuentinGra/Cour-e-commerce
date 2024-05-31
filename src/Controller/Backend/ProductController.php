@@ -84,5 +84,16 @@ class ProductController extends AbstractController
             $this->addFlash('error', 'Product Not Found');
             return $this->redirectToRoute('admin.products.index');
         }
+
+        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('token'))) {
+            $this->em->remove($product);
+            $this->em->flush();
+
+            $this->addFlash('success', 'Produit supprimer avec succes');
+        } else {
+            $this->addFlash('error', 'Invalide token CSRF');
+        }
+
+        return $this->redirectToRoute('admin.products.index');
     }
 }
