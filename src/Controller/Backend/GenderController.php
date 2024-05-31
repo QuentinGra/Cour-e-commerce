@@ -53,5 +53,45 @@ class GenderController extends AbstractController
     #[Route('/{id}/edit', name: '.edit', methods: ['GET', 'POST'])]
     public function update(?Gender $gender, Request $request): Response | RedirectResponse
     {
+        if (!$gender) {
+            $this->addFlash('error', 'Gender Not Found');
+            return $this->redirectToRoute('admin.genders.index');
+        }
+
+        $form = $this->createForm(GenderType::class, $gender);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->em->persist($gender);
+            $this->em->flush();
+
+            $this->addFlash('success', 'Genre modifié avec succès');
+
+            return $this->redirectToRoute('admin.genders.index');
+        }
+
+        return $this->render('Backend/Gender/edit.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+    #[Route('/{id}/delete', name: '.delete', methods: ['POST'])]
+    public function delete(?Gender $gender, Request $request): Response | RedirectResponse
+    {
+        if (!$gender) {
+            $this->addFlash('error', 'Gender Not Found');
+            return $this->redirectToRoute('admin.products.index');
+        }
+
+        if ($this->isCsrfTokenValid('delete' . $gender->getId(), $request->request->get('token'))) {
+            $this->em->remove($gender);
+            $this->em->flush();
+
+            $this->addFlash('success', 'Genre supprimer avec succes');
+        } else {
+            $this->addFlash('error', 'Invalide token CSRF');
+        }
+
+        return $this->redirectToRoute('admin.genders.index');
     }
 }
