@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Entity\Utils\DateTimeTrait;
-use App\Entity\Utils\EnableTrait;
-use App\Entity\Utils\SluggableTrait;
-use App\Repository\MarqueRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Entity\File;
+use App\Entity\Utils\EnableTrait;
+use App\Entity\Utils\DateTimeTrait;
+use App\Entity\Utils\SluggableTrait;
+use App\Repository\MarqueRepository;
+use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: MarqueRepository::class)]

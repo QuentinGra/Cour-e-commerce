@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Création d'une marque
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<h1>Création d'une marque</h1>
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<button class="btn" type="submit">Ajouter une marque</button>
+		{{ form_end(form) }}
+	</section>
+{% endblock %}
