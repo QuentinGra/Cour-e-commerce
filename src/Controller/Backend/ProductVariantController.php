@@ -6,11 +6,11 @@ use App\Entity\Product;
 use App\Entity\ProductVariant;
 use App\Form\ProductVariantType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/admin/productVariant', name: 'admin.productVariant')]
 class ProductVariantController extends AbstractController
@@ -35,7 +35,7 @@ class ProductVariantController extends AbstractController
     }
 
     #[Route('/create', name: '.create', methods: ['GET', 'POST'])]
-    public function create(Request $request): Response | RedirectResponse
+    public function create(Request $request): Response|RedirectResponse
     {
         $productVariant = new ProductVariant();
 
@@ -57,7 +57,7 @@ class ProductVariantController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: '.edit', methods: ['GET', 'POST'])]
-    public function update(?ProductVariant $productVariant, Request $request): Response | RedirectResponse
+    public function update(?ProductVariant $productVariant, Request $request): Response|RedirectResponse
     {
         if (!$productVariant) {
             $this->addFlash('error', 'ProductVariant Not Found');
@@ -91,7 +91,7 @@ class ProductVariantController extends AbstractController
             return $this->redirectToRoute('admin.productVariant.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $productVariant->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$productVariant->getId(), $request->request->get('token'))) {
             $this->em->remove($productVariant);
             $this->em->flush();
 
