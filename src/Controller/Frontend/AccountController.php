@@ -92,7 +92,7 @@ class AccountController extends AbstractController
             return $this->redirectToRoute('account.address');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $address->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$address->getId(), $request->request->get('token'))) {
             $this->em->remove($address);
             $this->em->flush();
 

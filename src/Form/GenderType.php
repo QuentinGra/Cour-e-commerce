@@ -17,7 +17,7 @@ class GenderType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom',
                 'attr' => [
-                    'placeholder' => 'Nom du genre'
+                    'placeholder' => 'Nom du genre',
                 ],
                 'required' => true,
             ])

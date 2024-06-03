@@ -6,11 +6,11 @@ use App\Entity\Product;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/admin/products', name: 'admin.products')]
 class ProductController extends AbstractController
@@ -29,7 +29,7 @@ class ProductController extends AbstractController
     }
 
     #[Route('/create', name: '.create', methods: ['GET', 'POST'])]
-    public function create(Request $request): Response | RedirectResponse
+    public function create(Request $request): Response|RedirectResponse
     {
         $product = new Product();
 
@@ -37,7 +37,6 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->em->persist($product);
             $this->em->flush();
 
@@ -52,10 +51,11 @@ class ProductController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: '.edit', methods: ['GET', 'POST'])]
-    public function update(?Product $product, Request $request): Response | RedirectResponse
+    public function update(?Product $product, Request $request): Response|RedirectResponse
     {
         if (!$product) {
             $this->addFlash('error', 'Product Not Found');
+
             return $this->redirectToRoute('admin.products.index');
         }
 
@@ -63,7 +63,6 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->em->persist($product);
             $this->em->flush();
 
@@ -78,14 +77,15 @@ class ProductController extends AbstractController
     }
 
     #[Route('/{id}/delete', name: '.delete', methods: ['POST'])]
-    public function delete(?Product $product, Request $request): Response | RedirectResponse
+    public function delete(?Product $product, Request $request): Response|RedirectResponse
     {
         if (!$product) {
             $this->addFlash('error', 'Product Not Found');
+
             return $this->redirectToRoute('admin.products.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $product->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('token'))) {
             $this->em->remove($product);
             $this->em->flush();
 
