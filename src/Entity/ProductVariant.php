@@ -26,6 +26,10 @@ class ProductVariant
     #[ORM\JoinColumn(nullable: false)]
     private ?Product $products = null;
 
+    #[ORM\ManyToOne(inversedBy: 'productVariants')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Taxe $taxe = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -63,6 +67,18 @@ class ProductVariant
     public function setProducts(?Product $products): static
     {
         $this->products = $products;
+
+        return $this;
+    }
+
+    public function getTaxe(): ?Taxe
+    {
+        return $this->taxe;
+    }
+
+    public function setTaxe(?Taxe $taxe): static
+    {
+        $this->taxe = $taxe;
 
         return $this;
     }
