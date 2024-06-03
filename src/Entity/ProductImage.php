@@ -2,11 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductImageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProductImageRepository;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProductImageRepository::class)]
+#[Vich\Uploadable]
 class ProductImage
 {
     #[ORM\Id]
@@ -14,14 +17,23 @@ class ProductImage
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Vich\UploadableField(mapping: 'products', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
+    #[Assert\Length(
+        max: 255
+    )]
     private ?string $imageName = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $imageSize = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(
+        max: 255
+    )]
     #[Assert\NotBlank]
     private ?string $imageType = null;
 
@@ -31,6 +43,20 @@ class ProductImage
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+        if (null !== $imageFile) {
+            // Il faut biensur que la propriété updatedAt soit crée sur l'Entity.
+            // TODO: Faire un truc
+            $this->updated_at = new \DateTimeImmutable();
+        }
+    }
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 
     public function getImageName(): ?string
