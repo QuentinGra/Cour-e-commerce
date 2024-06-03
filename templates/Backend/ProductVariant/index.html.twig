@@ -1,7 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Administration des ProductVariants
+	Liste des productVariant
 {% endblock %}
 
-{% block body %}{% endblock %}
+{% block body %}
+	<section>
+		<h1>Administration des productVariant</h1>
+		<a href="{{ path('admin.productVariant.create')}}" class="mt-2 btn btn-primary">Créer un productVariant</a>
+		<div>
+			{% for productVariant in productVariants %}
+				<div>
+					<p>{{ productVariant.price }}</p>
+					<p>{{ productVariant.size }}</p>
+					<div>
+						<a href="{{ path('admin.productVariant.edit', {id: productVariant.id}) }}">Modifier</a>
+						{% include 'Backend/ProductVariant/_deleteForm.html.twig' %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
