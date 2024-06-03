@@ -48,7 +48,7 @@ class ProductVariantController extends AbstractController
 
             $this->addFlash('success', 'ProductVariant crée avec succès');
 
-            return $this->redirectToRoute('admin.productVariant.index');
+            return $this->redirectToRoute('admin.products.index');
         }
 
         return $this->render('Backend/ProductVariant/create.html.twig', [
@@ -62,7 +62,7 @@ class ProductVariantController extends AbstractController
         if (!$productVariant) {
             $this->addFlash('error', 'ProductVariant Not Found');
 
-            return $this->redirectToRoute('admin.productVariant.index');
+            return $this->redirectToRoute('admin.products.index');
         }
 
         $form = $this->createForm(ProductVariantType::class, $productVariant);
@@ -74,7 +74,7 @@ class ProductVariantController extends AbstractController
 
             $this->addFlash('success', 'ProductVariant modifié avec succès');
 
-            return $this->redirectToRoute('admin.productVariant.index');
+            return $this->redirectToRoute('admin.products.index');
         }
 
         return $this->render('Backend/ProductVariant/edit.html.twig', [
@@ -88,7 +88,7 @@ class ProductVariantController extends AbstractController
         if (!$productVariant) {
             $this->addFlash('error', 'ProductVariant Not Found');
 
-            return $this->redirectToRoute('admin.productVariant.index');
+            return $this->redirectToRoute('admin.products.index');
         }
 
         if ($this->isCsrfTokenValid('delete' . $productVariant->getId(), $request->request->get('token'))) {
@@ -100,6 +100,6 @@ class ProductVariantController extends AbstractController
             $this->addFlash('error', 'Invalide token CSRF');
         }
 
-        return $this->redirectToRoute('admin.productVariant.index');
+        return $this->redirectToRoute('admin.products.index');
     }
 }

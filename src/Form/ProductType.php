@@ -2,13 +2,21 @@
 
 namespace App\Form;
 
+use App\Entity\Gender;
+use App\Entity\Model;
+use App\Entity\Marque;
 use App\Entity\Product;
+use App\Repository\GenderRepository;
+use Doctrine\ORM\QueryBuilder;
+use App\Repository\ModelRepository;
+use App\Repository\MarqueRepository;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductType extends AbstractType
 {
@@ -39,6 +47,39 @@ class ProductType extends AbstractType
             ->add('enable', CheckboxType::class, [
                 'label' => 'Actif',
                 'required' => false,
+            ])
+            ->add('marque', EntityType::class, [
+                'class' => Marque::class,
+                'query_builder' => function (MarqueRepository $maR): QueryBuilder {
+                    return $maR->createQueryBuilder('ma')
+                        ->andWhere('ma.enable = :enable')
+                        ->setParameter('enable', true);
+                },
+                'choice_label' => 'name',
+                'expanded' => false,
+                'multiple' => false,
+            ])
+            ->add('model', EntityType::class, [
+                'class' => Model::class,
+                'query_builder' => function (ModelRepository $moR): QueryBuilder {
+                    return $moR->createQueryBuilder('mo')
+                        ->andWhere('mo.enable = :enable')
+                        ->setParameter('enable', true);
+                },
+                'choice_label' => 'name',
+                'expanded' => false,
+                'multiple' => false,
+            ])
+            ->add('gender', EntityType::class, [
+                'class' => Gender::class,
+                'query_builder' => function (GenderRepository $gR): QueryBuilder {
+                    return $gR->createQueryBuilder('g')
+                        ->andWhere('g.enable = :enable')
+                        ->setParameter('enable', true);
+                },
+                'choice_label' => 'name',
+                'expanded' => false,
+                'multiple' => false,
             ]);
     }
 

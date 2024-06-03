@@ -25,7 +25,7 @@ class ProductVariantType extends AbstractType
             ->add('size', NumberType::class, [
                 'label' => 'Size',
             ])
-            ->add('product', EntityType::class, [
+            ->add('products', EntityType::class, [
                 'class' => Product::class,
                 'query_builder' => function (ProductRepository $pr): QueryBuilder {
                     return $pr->createQueryBuilder('p')
