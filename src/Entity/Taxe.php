@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Entity\Utils\EnableTrait;
 use App\Repository\TaxeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -23,6 +25,17 @@ class Taxe
     #[ORM\Column]
     #[Assert\NotBlank]
     private ?float $rate = null;
+
+    /**
+     * @var Collection<int, ProductVariant>
+     */
+    #[ORM\OneToMany(targetEntity: ProductVariant::class, mappedBy: 'taxes')]
+    private Collection $productVariants;
+
+    public function __construct()
+    {
+        $this->productVariants = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -49,6 +62,36 @@ class Taxe
     public function setRate(float $rate): static
     {
         $this->rate = $rate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProductVariant>
+     */
+    public function getProductVariants(): Collection
+    {
+        return $this->productVariants;
+    }
+
+    public function addProductVariant(ProductVariant $productVariant): static
+    {
+        if (!$this->productVariants->contains($productVariant)) {
+            $this->productVariants->add($productVariant);
+            $productVariant->setTaxe($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductVariant(ProductVariant $productVariant): static
+    {
+        if ($this->productVariants->removeElement($productVariant)) {
+            // set the owning side to null (unless already changed)
+            if ($productVariant->getTaxe() === $this) {
+                $productVariant->setTaxe(null);
+            }
+        }
 
         return $this;
     }
