@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Modification d'un taxe
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Modification d'un taxe</h1>
+		{% include 'Backend/Taxe/_editForm.html.twig' %}
+		<a href="{{ path('admin.taxe.index') }}">Retour à la liste des taxes</a>
+	</section>
+{% endblock %}

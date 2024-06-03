@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Modification d'un productVariant
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Modification d'un productVariant</h1>
+		{% include 'Backend/ProductVariant/_editForm.html.twig' %}
+		<a href="{{ path('admin.productVariant.index') }}">Retour à la liste des productVariants</a>
+	</section>
+{% endblock %}
