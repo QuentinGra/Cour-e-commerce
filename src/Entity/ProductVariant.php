@@ -22,6 +22,10 @@ class ProductVariant
     #[Assert\NotBlank]
     private ?float $size = null;
 
+    #[ORM\ManyToOne(inversedBy: 'productVariants')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Product $products = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,6 +51,18 @@ class ProductVariant
     public function setSize(float $size): static
     {
         $this->size = $size;
+
+        return $this;
+    }
+
+    public function getProducts(): ?Product
+    {
+        return $this->products;
+    }
+
+    public function setProducts(?Product $products): static
+    {
+        $this->products = $products;
 
         return $this;
     }
