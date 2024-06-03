@@ -7,6 +7,7 @@
 {% block body %}
 	<section>
 		<h1>Administration des produits</h1>
+		<a href="{{ path('admin.products.create')}}" class="mt-2 btn btn-primary">Créer un produit</a>
 		<div>
 			{% for product in products %}
 				<div>

@@ -6,12 +6,17 @@
 {% block body %}
 	<section>
 		<h1>Administration des marques</h1>
+		<a href="{{ path('admin.marques.create')}}" class="mt-2 btn btn-primary">Créer un marque</a>
 		<div>
 			{% for marque in marques %}
 				<div>
 					<h4>{{ marque.name }}</h4>
 					<p>{{ marque.description }}</p>
 					<p>{{ marque.enable ? 'Actif' : 'Inactif'}}</p>
+					<div>
+						<a href="{{ path('admin.marques.edit', {id: marque.id}) }}">Modifier</a>
+						{% include 'Backend/Marque/_deleteForm.html.twig' %}
+					</div>
 				</div>
 			{% endfor %}
 		</div>

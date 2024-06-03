@@ -19,14 +19,14 @@ class MarqueType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nom',
                 'attr' => [
-                    'placeholder' => 'Nom de la marque'
+                    'placeholder' => 'Nom de la marque',
                 ],
                 'required' => true,
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
                 'attr' => [
-                    'placeholder' => 'Description de la marque'
+                    'placeholder' => 'Description de la marque',
                 ],
                 'required' => false,
             ])

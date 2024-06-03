@@ -6,11 +6,11 @@ use App\Entity\Marque;
 use App\Form\MarqueType;
 use App\Repository\MarqueRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/marques', name: 'admin.marques')]
 class MarqueController extends AbstractController
@@ -46,7 +46,7 @@ class MarqueController extends AbstractController
         }
 
         return $this->render('Backend/Marque/create.html.twig', [
-            'form' => $form
+            'form' => $form,
         ]);
     }
 
@@ -72,7 +72,7 @@ class MarqueController extends AbstractController
         }
 
         return $this->render('Backend/Marque/edit.html.twig', [
-            'form' => $form
+            'form' => $form,
         ]);
     }
 
@@ -85,7 +85,7 @@ class MarqueController extends AbstractController
             return $this->redirectToRoute('admin.models.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $marque->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$marque->getId(), $request->request->get('token'))) {
             $this->em->remove($marque);
             $this->em->flush();
 
