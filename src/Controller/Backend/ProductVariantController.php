@@ -20,7 +20,7 @@ class ProductVariantController extends AbstractController
     ) {
     }
 
-    #[Route('/{id}', name: '.index', methods: ['GET'])]
+    #[Route('/{id}', name: '.index', methods: ['GET'], requirements: ['id' => '\d+'])]
     public function index(?Product $product): Response
     {
         if (!$product) {
@@ -91,7 +91,7 @@ class ProductVariantController extends AbstractController
             return $this->redirectToRoute('admin.productVariant.index');
         }
 
-        if ($this->isCsrfTokenValid('delete'.$productVariant->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete' . $productVariant->getId(), $request->request->get('token'))) {
             $this->em->remove($productVariant);
             $this->em->flush();
 
