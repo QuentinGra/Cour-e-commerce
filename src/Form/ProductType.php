@@ -52,6 +52,7 @@ class ProductType extends AbstractType
             ->add('productImages', CollectionType::class, [
                 'entry_type' => ProductImageType::class,
                 'entry_options' => ['label' => false],
+                'allow_add' => true,
             ])
             ->add('marque', EntityType::class, [
                 'class' => Marque::class,
