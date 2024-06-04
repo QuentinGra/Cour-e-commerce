@@ -4,10 +4,10 @@ namespace App\Form;
 
 use App\Entity\ProductImage;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Vich\UploaderBundle\Form\Type\VichImageType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProductImageType extends AbstractType
 {
@@ -18,7 +18,7 @@ class ProductImageType extends AbstractType
                 'choices' => [
                     'Image principale' => 'main',
                     'Image secondaire' => 'secondary',
-                ]
+                ],
             ])
             ->add('imageFile', VichImageType::class, [
                 'label' => 'Image',
