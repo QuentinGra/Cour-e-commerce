@@ -1,0 +1,16 @@
+.footer {
+  @include flexbox($justify: space-between, $align: start);
+  background-color: $secondaryColor;
+  color: $primaryColor;
+  padding: 1rem 4rem;
+  font-size: 0.8rem;
+
+  &__section {
+    width: 15%;
+    .icons {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+}
