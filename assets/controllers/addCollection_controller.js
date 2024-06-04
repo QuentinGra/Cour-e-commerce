@@ -2,6 +2,9 @@ import { Controller } from '@hotwired/stimulus';
 
 export default class extends Controller {
     connect() {
+        this.element.querySelectorAll('ul.productImages li').forEach((productImage) => {
+            this.addProductImageDeleteLink(productImage)
+        })
         const btn = this.element.querySelector('.add_item_link');
 
         btn.addEventListener('click', this.addFormToCollection.bind(this));
@@ -23,5 +26,20 @@ export default class extends Controller {
         collectionHolder.appendChild(item);
 
         collectionHolder.dataset.index++;
-    };
+
+        this.addProductImageDeleteLink(item);
+    }
+
+    addProductImageDeleteLink(item) {
+        const removeFormButton = document.createElement('button');
+        removeFormButton.innerText = 'Delete this tag';
+
+        item.append(removeFormButton);
+
+        removeFormButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            // remove the li for the tag form
+            item.remove();
+        });
+    }
 }

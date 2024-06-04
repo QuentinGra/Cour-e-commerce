@@ -14,7 +14,14 @@ class ProductImageType extends AbstractType
     {
         $builder
             ->add('imageType')
-            ->add('imageFile', VichImageType::class, []);
+            ->add('imageFile', VichImageType::class, [
+                'label' => 'Image',
+                'required' => false,
+                'allow_delete' => true,
+                'delete_label' => 'Supprimer l\'image',
+                'download_uri' => false,
+                'image_uri' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

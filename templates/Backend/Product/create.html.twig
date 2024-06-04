@@ -9,14 +9,7 @@
 		<h1>Création d'un produit</h1>
 		{{ form_start(form) }}
 		{{ form_row(form.name) }}
-		<div {{ stimulus_controller('addCollection') }}>
-			<ul class="productImages" data-index="{{ form.productImages|length > 0 ? form.productImages|last.vars.name + 1 : 0}}" data-prototype="{{ form_widget(form.productImages.vars.prototype)|e('html_attr') }}">
-				{% for productImage in form.productImages %}
-					<li>{{ form_row(productImage.name) }}</li>
-				{% endfor %}
-			</ul>
-			<button type="button" class="add_item_link" data-collection-holder-class="productImages">Add a Images</button>
-		</div>
+		{% include 'Backend/Product/_productImage.html.twig' %}
 		{{ form_widget(form) }}
 		<button class="btn" type="submit">Ajouter un produit</button>
 		{{ form_end(form) }}
