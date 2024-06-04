@@ -2,15 +2,15 @@
 
 namespace App\Controller\Frontend;
 
-use App\Entity\User;
 use App\Entity\Address;
+use App\Entity\User;
 use App\Form\AddressType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 #[Route('/account', name: 'account')]
 class AccountController extends AbstractController
@@ -32,7 +32,7 @@ class AccountController extends AbstractController
     }
 
     #[Route('/address/create', name: '.address.create', methods: ['GET', 'POST'])]
-    public function createAddress(Request $request): Response | RedirectResponse
+    public function createAddress(Request $request): Response|RedirectResponse
     {
         $address = new Address();
 
@@ -47,7 +47,7 @@ class AccountController extends AbstractController
             $this->em->persist($address);
             $this->em->flush();
 
-            $this->addFlash('succes', 'Adresse crée avec succès');
+            $this->addFlash('success', 'Adresse crée avec succès');
 
             return $this->redirectToRoute('account.address');
         }
@@ -58,22 +58,23 @@ class AccountController extends AbstractController
     }
 
     #[Route('/address/{id}/edit', name: '.address.edit', methods: ['GET', 'POST'])]
-    public function updateAddress(?Address $address, Request $request): Response | RedirectResponse
+    public function updateAddress(?Address $address, Request $request): Response|RedirectResponse
     {
         if (!$address) {
             $this->addFlash('error', 'Address Not Found');
-            return $this->redirectToRoute('app.account.address');
+
+            return $this->redirectToRoute('account.address');
         }
 
         $form = $this->createForm(AddressType::class, $address);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $this->em->persist($address);
             $this->em->flush();
 
-            $this->addFlash('success', 'Adresse modifier avec success');
+            $this->addFlash('success', 'Adresse modifié avec success');
+
             return $this->redirectToRoute('account.address');
         }
 
@@ -83,14 +84,15 @@ class AccountController extends AbstractController
     }
 
     #[Route('/address/{id}/delete', name: '.address.delete', methods: ['POST'])]
-    public function deleteAddress(?Address $address, Request $request): Response | RedirectResponse
+    public function deleteAddress(?Address $address, Request $request): Response|RedirectResponse
     {
         if (!$address) {
             $this->addFlash('error', 'Address Not Found');
+
             return $this->redirectToRoute('account.address');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $address->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$address->getId(), $request->request->get('token'))) {
             $this->em->remove($address);
             $this->em->flush();
 

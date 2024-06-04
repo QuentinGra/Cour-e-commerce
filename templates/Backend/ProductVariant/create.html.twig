@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Création d'un productVariant
+{% endblock %}
+
+{% block body %}
+	<section class="container">
+		<h1>Création d'un productVariant</h1>
+		{{ form_start(form) }}
+		{{ form_widget(form) }}
+		<button class="btn" type="submit">Ajouter un productVariant</button>
+		{{ form_end(form) }}
+	</section>
+{% endblock %}

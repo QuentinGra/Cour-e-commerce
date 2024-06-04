@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des models
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Administration des models</h1>
+		<a href="{{ path('admin.models.create')}}" class="mt-2 btn btn-primary">Créer un model</a>
+		<div>
+			{% for model in models %}
+				<div>
+					<h4>{{ model.name }}</h4>
+					<p>{{ model.enable ? 'Actif' : 'Inactif'}}</p>
+					<div>
+						<a href="{{ path('admin.models.edit', {id: model.id}) }}">Modifier</a>
+						{% include 'Backend/Model/_deleteForm.html.twig' %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

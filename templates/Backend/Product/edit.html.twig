@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Modification d'un produit
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Modification d'un produit</h1>
+		{% include 'Backend/Product/_editForm.html.twig' %}
+		<a href="{{ path('admin.products.index') }}">Retour à la liste des produits</a>
+	</section>
+{% endblock %}

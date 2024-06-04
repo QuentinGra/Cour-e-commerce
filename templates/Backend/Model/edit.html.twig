@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Modification d'un model
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Modification d'un model</h1>
+		{% include 'Backend/Model/_editForm.html.twig' %}
+		<a href="{{ path('admin.models.index') }}">Retour à la liste des models</a>
+	</section>
+{% endblock %}

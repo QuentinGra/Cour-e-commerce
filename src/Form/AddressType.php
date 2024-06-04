@@ -23,14 +23,14 @@ class AddressType extends AbstractType
             ->add('zip_code', TextType::class, [
                 'label' => 'Code postal',
                 'attr' => [
-                    'placeholder' => '75000'
+                    'placeholder' => '75000',
                 ],
                 'required' => true,
             ])
             ->add('city', TextType::class, [
                 'label' => 'Ville',
                 'attr' => [
-                    'placeholder' => 'Paris'
+                    'placeholder' => 'Paris',
                 ],
                 'required' => true,
             ]);
