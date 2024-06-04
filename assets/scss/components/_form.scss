@@ -10,16 +10,16 @@
     padding: 0.5rem 0rem;
     width: 100%;
     border-radius: $border-radius;
-    background-color: $black;
-    color: $primary;
+    background-color: $btnColor;
+    color: $primaryColor;
   }
 
   label,
   ::placeholder {
-    color: $text-color;
+    color: $textColor;
   }
 
   form + p {
-    color: $text-color;
+    color: $textColor;
   }
 }

@@ -1,7 +1,17 @@
 html,
 body {
   scroll-behavior: smooth;
-  color: $secondary;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: $lightColor;
+}
+
+main {
+  text-align: center;
+  padding: 1rem 4rem;
 }
 
 img,
@@ -14,6 +24,14 @@ video {
 
 a {
   color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .container {

@@ -1,8 +1,26 @@
 // Color
-$primary: #f6f6f6;
-$secondary: #333333;
-$text-color: #808080;
-$black: #080808;
+$colors: (
+  primary: #f6f6f6,
+  secondary: #333333,
+  text-color: #808080,
+  success: #28a745,
+  danger: #dc3545,
+  warning: #ffc107,
+  light: #f3f3f3,
+  dark: #080808,
+  text-muted: rgb(161 161 170 / 1),
+);
+
+// Utilisation de map-get() pour récupérer une valeur
+$primaryColor: map-get($colors, primary);
+$secondaryColor: map-get($colors, secondary);
+$btnColor: map-get($colors, dark);
+$lightColor: map-get($colors, light);
+$textColor: map-get($colors, text-color);
+$textMutedColor: map-get($colors, text-muted);
+$successColor: map-get($colors, success);
+$dangerColor: map-get($colors, danger);
+$warningColor: map-get($colors, warning);
 
 // Border radius
 $border-radius: 8px;
