@@ -3,11 +3,11 @@
 namespace App\Entity;
 
 use App\Entity\Utils\DateTimeTrait;
-use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProductImageRepository;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: ProductImageRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -56,6 +56,7 @@ class ProductImage
             $this->updated_at = new \DateTimeImmutable();
         }
     }
+
     public function getImageFile(): ?File
     {
         return $this->imageFile;
