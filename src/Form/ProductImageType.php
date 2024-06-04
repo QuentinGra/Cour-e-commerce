@@ -5,15 +5,21 @@ namespace App\Form;
 use App\Entity\ProductImage;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ProductImageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('imageType')
+            ->add('imageType', ChoiceType::class, [
+                'choices' => [
+                    'Image principale' => 'main',
+                    'Image secondaire' => 'secondary',
+                ]
+            ])
             ->add('imageFile', VichImageType::class, [
                 'label' => 'Image',
                 'required' => false,
