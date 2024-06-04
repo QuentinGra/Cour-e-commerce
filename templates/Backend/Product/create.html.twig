@@ -8,6 +8,8 @@
 	<section class="container">
 		<h1>Création d'un produit</h1>
 		{{ form_start(form) }}
+		{{ form_row(form.name) }}
+		{% include 'Backend/Product/_productImage.html.twig' %}
 		{{ form_widget(form) }}
 		<button class="btn" type="submit">Ajouter un produit</button>
 		{{ form_end(form) }}

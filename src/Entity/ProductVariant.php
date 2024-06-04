@@ -30,7 +30,6 @@ class ProductVariant
     #[ORM\JoinColumn(nullable: false)]
     private ?Taxe $taxe = null;
 
-
     public function getId(): ?int
     {
         return $this->id;

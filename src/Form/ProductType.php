@@ -3,20 +3,21 @@
 namespace App\Form;
 
 use App\Entity\Gender;
-use App\Entity\Model;
 use App\Entity\Marque;
+use App\Entity\Model;
 use App\Entity\Product;
 use App\Repository\GenderRepository;
-use Doctrine\ORM\QueryBuilder;
-use App\Repository\ModelRepository;
 use App\Repository\MarqueRepository;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
+use App\Repository\ModelRepository;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductType extends AbstractType
 {
@@ -47,6 +48,14 @@ class ProductType extends AbstractType
             ->add('enable', CheckboxType::class, [
                 'label' => 'Actif',
                 'required' => false,
+            ])
+            ->add('productImages', CollectionType::class, [
+                'entry_type' => ProductImageType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
+                'by_reference' => false,
+                'allow_delete' => true,
+                'delete_empty' => true,
             ])
             ->add('marque', EntityType::class, [
                 'class' => Marque::class,

@@ -2,17 +2,17 @@
 
 namespace App\Form;
 
-use App\Entity\Taxe;
 use App\Entity\Product;
 use App\Entity\ProductVariant;
+use App\Entity\Taxe;
 use App\Repository\ProductRepository;
-use Doctrine\ORM\QueryBuilder;
 use App\Repository\TaxeRepository;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
+use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductVariantType extends AbstractType
 {

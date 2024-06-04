@@ -6,11 +6,11 @@ use App\Entity\Taxe;
 use App\Form\TaxeType;
 use App\Repository\TaxeRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/admin/taxe', name: 'admin.taxe')]
 class TaxeController extends AbstractController
@@ -85,7 +85,7 @@ class TaxeController extends AbstractController
             return $this->redirectToRoute('admin.taxe.index');
         }
 
-        if ($this->isCsrfTokenValid('delete' . $taxe->getId(), $request->request->get('token'))) {
+        if ($this->isCsrfTokenValid('delete'.$taxe->getId(), $request->request->get('token'))) {
             $this->em->remove($taxe);
             $this->em->flush();
 
