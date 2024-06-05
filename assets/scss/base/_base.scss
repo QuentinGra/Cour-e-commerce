@@ -36,6 +36,18 @@ ol {
   margin: 0;
 }
 
-.container {
-  width: 540px;
+.btn {
+  margin: 1rem 0rem;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  background-color: $btnColor;
+  color: $primaryColor;
+}
+
+h4 {
+  margin-top: 1rem;
+}
+
+.container-form {
+  width: 25%;
 }

@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block body %}
-	<section>
-		<h1>Modification d'une adresse</h1>
-		{% include 'Frontend/Account/_editForm.html.twig' %}
-		<a href="{{ path('account.address') }}">Retour à la liste des adresses</a>
+	<section class="form">
+		<div class="container-form">
+			<h1>Modification d'une adresse</h1>
+			{% include 'Frontend/Account/_editForm.html.twig' %}
+			<a href="{{ path('account.address') }}">Retour à la liste des adresses</a>
+		</div>
 	</section>
 {% endblock %}
