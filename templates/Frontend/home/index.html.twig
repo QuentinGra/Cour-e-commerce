@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Accueil
+{% endblock %}
+
+{% block body %}
+	<section>
+		<div class="container-product">
+			{% for product in products %}
+				<div class="card">
+					<div class="card__img">
+						{% if product|main_image %}
+							<img src="{{ vich_uploader_asset(product|main_image)}}" alt="{{ product.name }}">
+						{% endif %}
+					</div>
+					<h3 class="card__name">{{ product.name }}</h3>
+					<p>A partir de €</p>
+					<p>Marque</p>
+				{% endfor %}
+			</div>
+		</section>
+	{% endblock %}
