@@ -8,9 +8,9 @@
 	<section>
 		<h1>Administration des models</h1>
 		<a href="{{ path('admin.models.create')}}" class="mt-2 btn btn-primary">Créer un model</a>
-		<div>
+		<div class="container-card-back">
 			{% for model in models %}
-				<div>
+				<div class="card-back">
 					<h4>{{ model.name }}</h4>
 					<p>{{ model.enable ? 'Actif' : 'Inactif'}}</p>
 					<div>

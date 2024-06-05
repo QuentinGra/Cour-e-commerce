@@ -33,6 +33,7 @@ export default class extends Controller {
     addProductImageDeleteLink(item) {
         const removeFormButton = document.createElement('button');
         removeFormButton.innerText = 'Delete this image';
+        removeFormButton.classList.add('btn');
 
         item.append(removeFormButton);
 

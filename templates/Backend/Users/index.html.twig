@@ -7,9 +7,9 @@
 {% block body %}
 	<section>
 		<h1>Administration des users</h1>
-		<div>
+		<div class="container-card-back">
 			{% for user in users %}
-				<div>
+				<div class="card-back">
 					<h4>{{ user.fullName }}</h4>
 					<p>{{ user.email }}</p>
 					<p>{{ user.roles|join(', ') }}</p>

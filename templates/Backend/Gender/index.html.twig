@@ -8,9 +8,9 @@
 	<section>
 		<h1>Administration des genres</h1>
 		<a href="{{ path('admin.genders.create')}}" class="mt-2 btn btn-primary">Créer un gender</a>
-		<div>
+		<div class="container-card-back">
 			{% for gender in genders %}
-				<div>
+				<div class="card-back">
 					<h4>{{ gender.name }}</h4>
 					<p>{{ gender.enable ? 'Actif' : 'Inactif'}}</p>
 					<div>

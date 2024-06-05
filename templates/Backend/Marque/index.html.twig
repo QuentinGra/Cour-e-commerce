@@ -7,9 +7,9 @@
 	<section>
 		<h1>Administration des marques</h1>
 		<a href="{{ path('admin.marques.create')}}" class="mt-2 btn btn-primary">Créer un marque</a>
-		<div>
+		<div class="container-card-back">
 			{% for marque in marques %}
-				<div>
+				<div class="card-back">
 					<h4>{{ marque.name }}</h4>
 					<p>{{ marque.description }}</p>
 					<p>{{ marque.enable ? 'Actif' : 'Inactif'}}</p>

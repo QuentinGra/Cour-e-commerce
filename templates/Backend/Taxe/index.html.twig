@@ -8,9 +8,9 @@
 	<section>
 		<h1>Administration des taxes</h1>
 		<a href="{{ path('admin.taxe.create')}}" class="mt-2 btn btn-primary">Créer une taxe</a>
-		<div>
+		<div class="container-card-back">
 			{% for taxe in taxes %}
-				<div>
+				<div class="card-back">
 					<h4>{{ taxe.name }}</h4>
 					<p>{{ taxe.rate }}</p>
 					<p>{{ taxe.enable ? 'Actif' : 'Inactif'}}</p>
