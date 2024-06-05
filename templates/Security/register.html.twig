@@ -5,17 +5,22 @@
 {% endblock %}
 
 {% block body %}
-	<section class="form">
-		<div class="container-form">
-			<h1>Inscription</h1>
-			<p>Créez-vous un compte pour commencer à faire votre collection de Sneakers</p>
-			{{ form_start(form) }}
-			{{ form_widget(form) }}
-			<button class="btn" type="submit">S'inscrire</button>
-			{{ form_end(form) }}
-			<p>Déja un compte ?
-				<a href="{{ path('app.login')}}">Connectez-vous</a>
-			</p>
+	<section>
+		<a class="fil" href="{{ path('app.login') }}">Accueil
+			<i class="bi bi-chevron-right"></i>
+		</a>
+		<div class="form">
+			<div class="container-form">
+				<h1>Inscription</h1>
+				<p>Créez-vous un compte pour commencer à faire votre collection de Sneakers</p>
+				{{ form_start(form) }}
+				{{ form_widget(form) }}
+				<button class="btn" type="submit">S'inscrire</button>
+				{{ form_end(form) }}
+				<p>Déja un compte ?
+					<a href="{{ path('app.login')}}">Connectez-vous</a>
+				</p>
+			</div>
 		</div>
 	</section>
 {% endblock %}

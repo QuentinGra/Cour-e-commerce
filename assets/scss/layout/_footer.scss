@@ -13,6 +13,7 @@
       display: flex;
       flex-direction: row;
       gap: 1rem;
+      font-size: 1.2rem;
     }
 
     .contact {
@@ -20,6 +21,7 @@
     }
 
     .bi-envelope {
+      font-size: 1.5rem;
       border: $primaryColor 1px solid;
       border-radius: $border-radius;
       padding: 0.4rem;

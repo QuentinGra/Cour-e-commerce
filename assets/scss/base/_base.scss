@@ -48,6 +48,15 @@ h4 {
   margin-top: 1rem;
 }
 
+.fil {
+  text-align: left;
+  color: $textColor;
+  padding-left: 1rem;
+  i {
+    margin-left: 1.5rem;
+  }
+}
+
 .container-form {
   width: 25%;
 }
