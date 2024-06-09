@@ -1,0 +1,26 @@
+.form {
+  @include flexbox($direction: column);
+
+  h1,
+  p {
+    text-align: center;
+  }
+  .btn {
+    margin: 1rem 0;
+    padding: 0.5rem 0rem;
+    width: 100%;
+    border-radius: $border-radius;
+    background-color: $btnColor;
+    color: $primaryColor;
+  }
+
+  label,
+  ::placeholder {
+    color: $textColor;
+  }
+
+  form + p {
+    color: $textColor;
+    padding-bottom: 4rem;
+  }
+}

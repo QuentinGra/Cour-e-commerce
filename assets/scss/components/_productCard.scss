@@ -1,0 +1,23 @@
+.container-product {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.card {
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+
+  img {
+    aspect-ratio: 16/9;
+  }
+}

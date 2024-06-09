@@ -1,0 +1,37 @@
+.nav {
+  @include flexbox($justify: space-between);
+  margin: 0rem 4rem;
+  padding: 1.2rem 0rem;
+  color: $textColor;
+
+  &__ul {
+    display: flex;
+    gap: 1.8rem;
+  }
+
+  &__search {
+    border: $textColor 1px solid;
+    border-radius: $border-radius;
+    padding: 0.5rem 1rem;
+    width: 35%;
+
+    input {
+      background-color: $lightColor;
+      border: none;
+      outline: none;
+      margin-right: 5rem;
+      width: 80%;
+    }
+
+    i {
+      cursor: pointer;
+    }
+  }
+
+  .logo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: $btnColor;
+    margin-bottom: 0;
+  }
+}

@@ -1,0 +1,12 @@
+.container-card-back {
+  @include flexbox($justify: space-between);
+  gap: 1rem;
+  .card-back {
+    text-align: left;
+    margin: 2rem 0rem;
+    padding: 0rem 3rem;
+    width: 25%;
+    border: $btnColor 1px solid;
+    border-radius: $border-radius;
+  }
+}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Modification d'un user
+{% endblock %}
+
+{% block body %}
+	<section class="form">
+		<div class="container-form">
+			<h1>Modification d'un user</h1>
+			{% include 'Backend/Users/_editForm.html.twig' %}
+			<a href="{{ path('admin.users.index') }}">Retour à la liste des users</a>
+		</div>
+	</section>
+{% endblock %}

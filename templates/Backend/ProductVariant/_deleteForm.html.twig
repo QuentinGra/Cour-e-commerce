@@ -1,0 +1,4 @@
+<form action="{{ path('admin.productVariant.delete', {id: productVariant.id}) }}" method="post">
+	<input type="hidden" name="token" value="{{ csrf_token('delete' ~ productVariant.id) }}">
+	<button class="btn" type="submit">Supprimer</button>
+</form>

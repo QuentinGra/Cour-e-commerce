@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Création d'une adresse
+{% endblock %}
+
+{% block body %}
+	<section class="form">
+		<div class="container-form">
+			<h1>Création d'une adresse</h1>
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button class="btn" type="submit">Ajouter une adresse</button>
+			{{ form_end(form) }}
+		</div>
+	</section>
+{% endblock %}

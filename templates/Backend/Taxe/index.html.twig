@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des taxes
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Administration des taxes</h1>
+		<a href="{{ path('admin.taxe.create')}}" class="mt-2 btn btn-primary">Créer une taxe</a>
+		<div class="container-card-back">
+			{% for taxe in taxes %}
+				<div class="card-back">
+					<h4>{{ taxe.name }}</h4>
+					<p>{{ taxe.rate }}</p>
+					<p>{{ taxe.enable ? 'Actif' : 'Inactif'}}</p>
+					<div>
+						<a href="{{ path('admin.taxe.edit', {id: taxe.id}) }}">Modifier</a>
+						{% include 'Backend/Taxe/_deleteForm.html.twig' %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}

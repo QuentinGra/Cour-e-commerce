@@ -1,0 +1,30 @@
+.footer {
+  @include flexbox($justify: space-between, $align: start);
+  background-color: $secondaryColor;
+  color: $primaryColor;
+  padding: 1rem 4rem;
+  margin-top: 3rem;
+  font-size: 0.8rem;
+
+  &__section {
+    width: 15%;
+
+    .icons {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .contact {
+      @include flexbox($align: start, $direction: column);
+    }
+
+    .bi-envelope {
+      font-size: 1.5rem;
+      border: $primaryColor 1px solid;
+      border-radius: $border-radius;
+      padding: 0.4rem;
+    }
+  }
+}

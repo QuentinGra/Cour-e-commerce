@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Liste des produits
+{% endblock %}
+
+{% block body %}
+	<section>
+		<h1>Administration des produits</h1>
+		<a href="{{ path('admin.products.create')}}" class="mt-2 btn btn-primary">Créer un produit</a>
+		<div class="container-card-back">
+			{% for product in products %}
+				<div class="card-back">
+					<h4>{{ product.name }}</h4>
+					<p>{{ product.description }}</p>
+					<p>{{ product.authenticity }}</p>
+					<p>{{ product.enable ? 'Actif' : 'Inactif'}}</p>
+					<div>
+						<a href="{{ path('admin.products.edit', {id: product.id}) }}">Modifier</a>
+						<a href="{{ path('admin.productVariant.index', {id: product.id}) }}">Variante</a>
+						{% include 'Backend/Product/_deleteForm.html.twig' %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+{% endblock %}
