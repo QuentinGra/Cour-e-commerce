@@ -8,9 +8,9 @@
 	<section>
 		<h1>Administration des productVariant</h1>
 		<a href="{{ path('admin.productVariant.create')}}" class="mt-2 btn btn-primary">Créer un productVariant</a>
-		<div>
+		<div class="container-card-back">
 			{% for productVariant in productVariants %}
-				<div>
+				<div class="card-back">
 					<p>{{ productVariant.price }}</p>
 					<p>{{ productVariant.size }}</p>
 					<div>

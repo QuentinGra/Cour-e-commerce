@@ -5,30 +5,35 @@
 {% endblock %}
 
 {% block body %}
-	<section class="form">
-		<div class="container">
-			<h1>Connexion</h1>
-			<p>Entrez votre email et votre mot de passe pour continuer</p>
-			<form action="{{ path('app.login')}}" method="post">
-				{% if error %}
+	<section>
+		<a class="fil" href="{{ path('app.login') }}">Accueil
+			<i class="bi bi-chevron-right"></i>
+		</a>
+		<div class="form">
+			<div class="container-form">
+				<h1>Connexion</h1>
+				<p>Entrez votre email et votre mot de passe pour continuer</p>
+				<form action="{{ path('app.login')}}" method="post">
+					{% if error %}
+						<div>
+							{{ error.messageKey|trans(error.messageData, 'security') }}
+						</div>
+					{% endif %}
 					<div>
-						{{ error.messageKey|trans(error.messageData, 'security') }}
+						<label for="email" class="form-label">Email</label>
+						<input class="form-control" type="email" id="email" placeholder="email@domain.com" name="_username" value="{{ lastUsername }}">
 					</div>
-				{% endif %}
-				<div>
-					<label for="email" class="form-label">Email</label>
-					<input class="form-control" type="email" id="email" placeholder="email@domain.com" name="_username" value="{{ lastUsername }}">
-				</div>
-				<div>
-					<label for="password" class="form-label">Password</label>
-					<input class="form-control" type="password" id="password" name="_password" placeholder="*****">
-				</div>
-				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-				<button class="btn" type="submit">Se connecter</button>
-			</form>
-			<p>Pas encore de compte ?<a href="{{ path('app.register') }}">
-					Créez en un</a>
-			</p>
+					<div>
+						<label for="password" class="form-label">Password</label>
+						<input class="form-control" type="password" id="password" name="_password" placeholder="*****">
+					</div>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					<button class="btn" type="submit">Se connecter</button>
+				</form>
+				<p>Pas encore de compte ?<a href="{{ path('app.register') }}">
+						Créez en un</a>
+				</p>
+			</div>
 		</div>
 	</section>
 {% endblock %}

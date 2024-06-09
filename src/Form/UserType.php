@@ -22,7 +22,7 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email',
                 'attr' => [
-                    'placeholder' => 'Test@exemple.com',
+                    'placeholder' => 'email@domain.com',
                 ],
                 'required' => true,
             ])
@@ -33,7 +33,7 @@ class UserType extends AbstractType
                 'first_options' => [
                     'label' => 'Mot de passe',
                     'attr' => [
-                        'placeholder' => 'Test12345!',
+                        'placeholder' => '*****',
                     ],
                     'constraints' => [
                         new NotBlank(),
@@ -49,7 +49,7 @@ class UserType extends AbstractType
                 'second_options' => [
                     'label' => 'Confirmation',
                     'attr' => [
-                        'placeholder' => 'Test12345!',
+                        'placeholder' => '*****',
                     ],
                 ],
                 'mapped' => false,

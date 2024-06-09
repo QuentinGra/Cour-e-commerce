@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block body %}
-	<section>
-		<h1>Modification d'un taxe</h1>
-		{% include 'Backend/Taxe/_editForm.html.twig' %}
-		<a href="{{ path('admin.taxe.index') }}">Retour à la liste des taxes</a>
+	<section class="form">
+		<div class="container-form">
+			<h1>Modification d'un taxe</h1>
+			{% include 'Backend/Taxe/_editForm.html.twig' %}
+			<a href="{{ path('admin.taxe.index') }}">Retour à la liste des taxes</a>
+		</div>
 	</section>
 {% endblock %}

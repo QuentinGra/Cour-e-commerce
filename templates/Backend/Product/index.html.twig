@@ -8,9 +8,9 @@
 	<section>
 		<h1>Administration des produits</h1>
 		<a href="{{ path('admin.products.create')}}" class="mt-2 btn btn-primary">Créer un produit</a>
-		<div>
+		<div class="container-card-back">
 			{% for product in products %}
-				<div>
+				<div class="card-back">
 					<h4>{{ product.name }}</h4>
 					<p>{{ product.description }}</p>
 					<p>{{ product.authenticity }}</p>

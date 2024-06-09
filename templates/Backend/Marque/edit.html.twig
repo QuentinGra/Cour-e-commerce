@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block body %}
-	<section>
-		<h1>Modification d'un marque</h1>
-		{% include 'Backend/Marque/_editForm.html.twig' %}
-		<a href="{{ path('admin.marques.index') }}">Retour à la liste des marques</a>
+	<section class="form">
+		<div class="container-form">
+			<h1>Modification d'un marque</h1>
+			{% include 'Backend/Marque/_editForm.html.twig' %}
+			<a href="{{ path('admin.marques.index') }}">Retour à la liste des marques</a>
+		</div>
 	</section>
 {% endblock %}

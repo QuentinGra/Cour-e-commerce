@@ -15,10 +15,11 @@
 		{% endblock %}
 	</head>
 	<body>
-		{# TODO: inclure le header #}
+		{% include 'Layout/_header.html.twig' %}
 		<main>
 			{% include 'Layout/_flash.html.twig' %}
 			{% block body %}{% endblock %}
 		</main>
+		{% include 'Layout/_footer.html.twig' %}
 	</body>
 </html>
